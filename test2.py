@@ -15,5 +15,15 @@ while True:
         lmlist = left['lmList']
         bbox = left['bbox']
         fingers = detector.fingersUp(left)
-        angle = math.degrees()
-
+        # angle = math.degrees()
+        # tip
+        x,y,w,h = bbox
+        mask = img[x:x+w,y:y+h]
+    cv.imshow('img',mask)
+    # if cv.waitKey(5) or 0xFF ==27:
+    #     break
+    key = cv.waitKey(5)
+    if key == 27:
+        break
+    cap.release()1
+    cv.destroyAllWindows()
