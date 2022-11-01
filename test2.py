@@ -1,5 +1,7 @@
+from pyexpat.errors import codes
 import cv2 as cv
 from cvzone.HandTrackingModule import HandDetector
+import numpy as np
 # from math import atan
 import math
 
@@ -19,11 +21,15 @@ while True:
         # tip
         x,y,w,h = bbox
         mask = img[x:x+w,y:y+h]
-    cv.imshow('img',mask)
+        size = mask.shape
+        white = np.ones(size)
+        # cut = cv.bitwise_or()
+        new_img = cv.bitwise_and(img,img,mask=mask)
+    cv.imshow('img',new_img)
     # if cv.waitKey(5) or 0xFF ==27:
     #     break
     key = cv.waitKey(5)
     if key == 27:
         break
-    cap.release()1
-    cv.destroyAllWindows()
+cap.release()
+cv.destroyAllWindows()Test codes
